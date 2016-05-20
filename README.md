@@ -5,6 +5,30 @@ The code is free to use and modify but no support is provided.
 
 ## Examples
 
+In the examples ```Block``` is this simple class
+
+```
+    public class Block
+    {
+        public Block(int id)
+        {
+            Id = id;
+            this.Children = new List<Block>();
+        }
+        public Block Parent { get; set; }
+        public int Id { get; set; }
+        public List<Block> Children { get; set; }
+
+        public Block Add(int id)
+        {
+            var b = new Block(id);
+            b.Parent = this;
+            this.Children.Add(b);
+            return b;
+        }
+    }
+```
+
 ### Iterating up in the tree
 
 ```
