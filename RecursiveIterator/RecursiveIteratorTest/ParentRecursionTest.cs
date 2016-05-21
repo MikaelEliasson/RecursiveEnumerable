@@ -33,5 +33,13 @@ namespace RecursiveIteratorTest
 
             enumerable.ShouldBe(new List<int>() { 12, 1 });
         }
+
+        [Fact]
+        public void Fib()
+        {
+            var enumerable = new RecursiveList<int>(1, (x, meta) => meta.Previous == null ? x : x + meta.Previous.Item).Take(10).ToList();
+
+            enumerable.ShouldBe(new List<int>() { 1, 1, 2, 3, 5, 8, 13, 21, 34, 55 });
+        }
     }
 }
