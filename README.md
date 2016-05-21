@@ -54,3 +54,12 @@ var enumerable = new RecursiveList<Block>(b1, b => b.Children).Select(b => b.Id)
 
 enumerable.ShouldBe(new List<int>() { 1, 11, 12, 111 });
 ```
+
+### For fun: Fibonacci
+
+```
+var enumerable = new RecursiveList<int>(1, (x, meta) => meta.Previous == null ? x : x + meta.Previous.Item).Take(10).ToList();
+
+enumerable.ShouldBe(new List<int>() { 1, 1, 2, 3, 5, 8, 13, 21, 34, 55 });
+
+```
